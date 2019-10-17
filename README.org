@@ -1,0 +1,19 @@
+* Unofficial Releases Package All Dependencies of Chisel3 and FIRRTL
+
+** Package FIRRTL
+#+begin_src shell
+$ git clone https://github.com/freechipsproject/firrtl.git
+$ sbt assembly
+#+end_src
+
+Then it locates in ~utils/bin/firrtl.jar~ .
+** Package Chisel3
+
+#+begin_src shell
+$ git clone https://github.com/freechipsproject/firrtl.git
+$ sbt publishLocal
+$ git clone https://github.com/freechipsproject/chisel3.git
+$ mill chisel3[2.12.10].assembly
+#+end_src
+
+Then it locates in ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~
