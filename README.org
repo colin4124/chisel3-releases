@@ -17,3 +17,26 @@ $ mill chisel3[2.12.10].assembly
 #+end_src
 
 Then it locates in ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~
+
+** Usage
+If you want to use chisel3 only, just to package chisel3 and no need to packge FIRRTL. Rename ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~ to ~chisel3.jar~ or others you want. Then copy it to ~lib~ directory according to what build tools you use.
+
+*** SBT
+unmanaged dependencies are jars dropped into the ~lib~ directory.
+*** Mill
+http://www.lihaoyi.com/mill/page/configuring-mill.html#unmanaged-jars
+
+#+begin_src scala
+// build.sc
+import mill._, scalalib._
+
+object foo extends ScalaModule {
+  def scalaVersion = "2.12.4"
+  def unmanagedClasspath = T {
+    if (!ammonite.ops.exists(millSourcePath / "lib")) Agg()
+    else Agg.from(ammonite.ops.ls(millSourcePath / "lib").map(PathRef(_)))
+  }
+}
+#+end_src
+
+You can override ~unmanagedClasspath~ to point it at any jars you place on the filesystem, e.g. in the above snippet any jars that happen to live in the ~foo/lib/~ folder.
