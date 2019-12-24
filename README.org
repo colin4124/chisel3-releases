@@ -1,14 +1,23 @@
 * Unofficial Releases Package All Dependencies of Chisel3 and FIRRTL
 
-** Package FIRRTL
+** Manual Package your jar
+
+This way is to package any version you want from source code.
+
+*** Package FIRRTL
+
+If you just want to package FIRRTL only. Take latest version for example.
+
 #+begin_src shell
 $ git clone https://github.com/freechipsproject/firrtl.git
 $ sbt assembly
 #+end_src
 
 Then it locates in ~utils/bin/firrtl.jar~ .
-** Package Chisel3
 
+*** Package Chisel3
+
+If you want to package Chisel3, compile firrtl which version related to the chisel3 verison, take latest verison for example.
 #+begin_src shell
 $ git clone https://github.com/freechipsproject/firrtl.git
 $ sbt publishLocal
@@ -18,11 +27,19 @@ $ mill chisel3[2.12.10].assembly
 
 Then it locates in ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~
 
+** Download Packaged jar.
+
+If you want FIRRTL only, download [[https://github.com/colin4124/chisel3-releases/releases/download/firrtl-1.2.0/firrtl-1.2.0.jar][firrtl-1.2.0]]
+
+If you want Chisel3, download [[https://github.com/colin4124/chisel3-releases/releases/download/chisel3-3.2.0/chisel3-3.2.0.jar][chisel3-3.2.0]]
+
 ** Usage
-If you want to use chisel3 only, just to package chisel3 and no need to packge FIRRTL. Rename ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~ to ~chisel3.jar~ or others you want. Then copy it to ~lib~ directory according to what build tools you use.
+
+If you package from souce ocde, take chisel3 for example. Rename ~out/chisel3/2.12.10/assembly/dest/out-tmp.jar~ to ~chisel3.jar~ or others you want. Then copy it to ~lib~ directory according to what build tools you use.
 
 *** SBT
-unmanaged dependencies are jars dropped into the ~lib~ directory.
+unmanaged dependencies are jars dropped into the ~lib~ directory. For example, the project directory is ~foo~, then enter it ~cd foo~ and ~mkdir lib~, copy the jar file to it.
+
 *** Mill
 http://www.lihaoyi.com/mill/page/configuring-mill.html#unmanaged-jars
 
