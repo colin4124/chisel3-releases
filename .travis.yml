@@ -7,8 +7,8 @@ before_deploy:
   - wget https://github.com/freechipsproject/chisel3/archive/v$VER.zip
   - unzip v$VER.zip
   - cd chisel3-$VER
-  - ../mill chisel3[2.12.11].assembly
-  - mv out/chisel3/2.12.11/assembly/dest/out-tmp.jar chisel3-$VER.jar
+  - ../mill chisel3[2.12.12].assembly
+  - mv out/chisel3/2.12.12/assembly/dest/out-tmp.jar chisel3-$VER.jar
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
