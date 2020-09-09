@@ -1,7 +1,7 @@
 name: Scala CI
 language: generic
 env:
-  - VER=3.3.2
+  - VER=3.4.0-RC1
 before_deploy:
   - curl -L https://github.com/lihaoyi/mill/releases/download/0.7.3/0.7.3 > mill && chmod +x mill
   - wget https://github.com/freechipsproject/chisel3/archive/v$VER.zip
